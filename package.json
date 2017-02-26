@@ -1,0 +1,39 @@
+{
+  "name": "software-architecture-pyramid",
+  "version": "0.0.1",
+  "description": "Software Architecture Pyramid code examples",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "lint": "node ./node_modules/eslint/bin/eslint.js ./",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanmcdermott-software-architecture-pyramid.git"
+  },
+  "keywords": [
+    "software architecture",
+    "clean code"
+  ],
+  "author": "Ryan McDermott",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryanmcdermott-software-architecture-pyramid/issues"
+  },
+  "homepage": "https://github.com/ryanmcdermott-software-architecture-pyramid#readme",
+  "devDependencies": {
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
+    "react-scripts": "0.9.2"
+  },
+  "dependencies": {
+    "react": "15.4.2",
+    "react-dom": "15.4.2"
+  }
+}
