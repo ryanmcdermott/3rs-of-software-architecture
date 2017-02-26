@@ -10,4 +10,4 @@ class ReadableBad extends Component {
   }
 }
 
-export ReadableBad;
+export default ReadableBad;
