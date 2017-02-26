@@ -23,9 +23,6 @@ const examples = {
   }
 };
 
-let chosenPyramidSection = 'readable';
-let choseQuality = 'good'
-
 const cx = classNames.bind(styles);
 
 const titleClass = cx({
@@ -33,12 +30,58 @@ const titleClass = cx({
 });
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      section: 'readable',
+      quality: 'good'
+    };
+  }
+
+  onSelectSection(e) {
+    this.setState({
+      section: e.target.value
+    });
+  }
+
+  onSelectQuality(e) {
+    this.setState({
+      quality: e.target.value
+    });
+  }
+
   render() {
     return (
       <div className="container">
         <div className="row">
           <h2 className={titleClass}>Software Architecture Pyramid</h2>
-          {React.createElement(examples[chosenPyramidSection][choseQuality])}
+        </div>
+
+        <div className="row">
+          <div className="six columns">
+            <label htmlFor="pyramidSectionSelector">Pyramid Section</label>
+            <select className="u-full-width" id="pyramidSectionSelector"
+              onChange={this.onSelectSection.bind(this)}
+              value={this.state.section}>
+              <option value="readable">Readable</option>
+              <option value="reusable">Reusable</option>
+              <option value="refactorable">Refactorable</option>
+            </select>
+          </div>
+
+          <div className="six columns">
+            <label htmlFor="qualitySelector">Quality</label>
+            <select className="u-full-width" id="qualitySelector"
+              onChange={this.onSelectQuality.bind(this)}
+              value={this.state.quality}>
+              <option value="bad">Bad</option>
+              <option value="good">Good</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="row">
+          {React.createElement(examples[this.state.section][this.state.quality])}
         </div>
       </div>
     );
