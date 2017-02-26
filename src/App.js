@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import styles from './styles.scss';
+import styles from './index.css';
 import classNames from 'classnames/bind';
+
 import ReadableBad from './1-readable/bad';
 import ReadableGood from './1-readable/good';
 import ReusableBad from './2-reusable/bad';
@@ -11,22 +12,22 @@ import RefactorableGood from './3-refactorable/good';
 const examples = {
   readable: {
     bad: ReadableBad,
-    good: ReadableGood
+    good: ReadableGood,
   },
   reusable: {
     bad: ReusableBad,
-    good: ReusableGood
+    good: ReusableGood,
   },
   refactorable: {
     bad: RefactorableBad,
-    good: RefactorableGood
-  }
+    good: RefactorableGood,
+  },
 };
 
 const cx = classNames.bind(styles);
 
 const titleClass = cx({
-  center: true
+  center: true,
 });
 
 class App extends Component {
@@ -34,19 +35,19 @@ class App extends Component {
     super();
     this.state = {
       section: 'readable',
-      quality: 'good'
+      quality: 'good',
     };
   }
 
   onSelectSection(e) {
     this.setState({
-      section: e.target.value
+      section: e.target.value,
     });
   }
 
   onSelectQuality(e) {
     this.setState({
-      quality: e.target.value
+      quality: e.target.value,
     });
   }
 
@@ -60,9 +61,12 @@ class App extends Component {
         <div className="row">
           <div className="six columns">
             <label htmlFor="pyramidSectionSelector">Pyramid Section</label>
-            <select className="u-full-width" id="pyramidSectionSelector"
+            <select
+              className="u-full-width"
+              id="pyramidSectionSelector"
               onChange={this.onSelectSection.bind(this)}
-              value={this.state.section}>
+              value={this.state.section}
+            >
               <option value="readable">Readable</option>
               <option value="reusable">Reusable</option>
               <option value="refactorable">Refactorable</option>
@@ -71,14 +75,19 @@ class App extends Component {
 
           <div className="six columns">
             <label htmlFor="qualitySelector">Quality</label>
-            <select className="u-full-width" id="qualitySelector"
+            <select
+              className="u-full-width"
+              id="qualitySelector"
               onChange={this.onSelectQuality.bind(this)}
-              value={this.state.quality}>
+              value={this.state.quality}
+            >
               <option value="bad">Bad</option>
               <option value="good">Good</option>
             </select>
           </div>
         </div>
+
+        <hr />
 
         <div className="row">
           {React.createElement(examples[this.state.section][this.state.quality])}
