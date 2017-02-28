@@ -35,7 +35,7 @@ class App extends Component {
     super();
     this.state = {
       section: 'readable',
-      quality: 'good',
+      quality: 'bad',
     };
   }
 
