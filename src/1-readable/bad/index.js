@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
-class inventory extends Component
+class inv extends Component
 {
-  constructor() {
+  constructor()
+  {
     super();
     this.state =
     {
+      c: 'usd',
       i: [
         {
           product: 'Flashlight',
@@ -32,76 +34,52 @@ class inventory extends Component
     }
   }
 
-  curConv(am, fC, tC)
-  {
-    var c = [
-      {
-        usd:
-        {
-          rupee: 66.78,
-          yuan: 6.87,
-        },
-        yuan: {
-          usd: 0.15,
-          rupee: 9.72,
-        },
-        rupee: {
-          yuan: .10,
-          usd: .015,
-        },
-      }
-    ];
-
-
-    return am * c[fC][tC];
-  }
-
   render () {
     return (
       <table style={{width: '100%'}}>
       <tbody>
       <tr>
-        <th>
-          Product
-        </th>
+      <th>
+        Product
+      </th>
 
-        <th>
-          Image
-        </th>
+      <th>
+        Image
+      </th>
 
-        <th>
-          Description
-        </th>
+      <th>
+        Description
+      </th>
 
-        <th>
-          Price
-        </th>
+      <th>
+        Price
+      </th>
       </tr>
-        {this.state.i.map(function(item, i) {
+        {this.state.i.map(function(i, idx) {
           return (
-            <tr>
+            <tr key = {idx}>
               <td>
-                {item.product}
+                {i.product}
               </td>
 
               <td>
-                <img src={item.img} alt=""/>
+              <img src={i.img} alt=""/>
               </td>
 
               <td>
-                {item.desc}
+              {i.desc}
               </td>
 
               <td>
-                {item.price}
+                {i.price}
               </td>
             </tr>
           );
         })}
-      </tbody>
+    </tbody>
     </table>
     );
   }
 }
 
-export default inventory;
+export default inv;
