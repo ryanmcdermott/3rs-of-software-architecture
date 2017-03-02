@@ -30,12 +30,12 @@ const titleClass = cx({
   center: true,
 });
 
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super();
     this.state = {
       section: 'reusable',
-      quality: 'bad',
+      quality: 'good',
     };
   }
 
@@ -96,5 +96,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;

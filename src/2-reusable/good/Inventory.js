@@ -1,52 +1,14 @@
 import React, { Component } from 'react';
 
 export default class Inventory extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
-      localCurrency: 'usd',
-      inventory: [
-        {
-          product: 'Flashlight',
-          img: '/flashlight.jpg',
-          desc: 'A really great flashlight',
-          price: 100,
-          currency: 'usd',
-        },
-        {
-          product: 'Tin can',
-          img: '/tin_can.jpg',
-          desc: 'Pretty much what you would expect from a tin can',
-          price: 32,
-          currency: 'usd',
-        },
-        {
-          product: 'Cardboard Box',
-          img: '/cardboard_box.png',
-          desc: 'It holds things',
-          price: 5,
-          currency: 'usd',
-        },
-      ],
-    };
-  }
-
-  convertCurrency(amount, fromCurrency, toCurrency) {
-    let currencyConversions = {
-      usd: {
-        rupee: 66.78,
-        yuan: 6.87,
-        usd: 1,
-      },
+      localCurrency: props.localCurrency,
+      inventory: props.inventory,
     };
 
-    let currencySymbols = {
-      usd: '$',
-      rupee: '₹',
-      yuan: '元',
-    };
-
-    return currencySymbols[toCurrency] + amount * currencyConversions[fromCurrency][toCurrency];
+    this.CurrencyConverter = props.currencyConverter;
   }
 
   onSelectCurrency(e) {
@@ -103,7 +65,11 @@ export default class Inventory extends Component {
                 </td>
 
                 <td>
-                  {this.convertCurrency(item.price, item.currency, this.state.localCurrency)}
+                  {this.CurrencyConverter.convert(
+                    item.price,
+                    item.currency,
+                    this.state.localCurrency,
+                  )}
                 </td>
               </tr>
             ))}
