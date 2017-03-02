@@ -34,7 +34,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      section: 'readable',
+      section: 'reusable',
       quality: 'bad',
     };
   }
