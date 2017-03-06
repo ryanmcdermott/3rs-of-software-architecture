@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import CurrencyConverter from './CurrencyConverter';
 import Inventory from './Inventory';
+import Cart from './Cart';
 
 export default class RefactorableBad extends Component {
   constructor() {
     super();
 
+    // Global Cart, BAD!
+    window.cart = [];
+
     this.inventory = [
       {
+        id: 1,
         product: 'Flashlight',
         img: '/flashlight.jpg',
         desc: 'A really great flashlight',
@@ -15,6 +20,7 @@ export default class RefactorableBad extends Component {
         currency: 'usd',
       },
       {
+        id: 2,
         product: 'Tin can',
         img: '/tin_can.jpg',
         desc: 'Pretty much what you would expect from a tin can',
@@ -22,6 +28,7 @@ export default class RefactorableBad extends Component {
         currency: 'usd',
       },
       {
+        id: 3,
         product: 'Cardboard Box',
         img: '/cardboard_box.png',
         desc: 'It holds things',
@@ -30,7 +37,6 @@ export default class RefactorableBad extends Component {
       },
     ];
 
-    // Most likely we would fetch this from an external source if this were a real app
     this.currencyConversions = {
       usd: {
         rupee: 66.78,
@@ -42,11 +48,19 @@ export default class RefactorableBad extends Component {
 
   render() {
     return (
-      <Inventory
-        inventory={this.inventory}
-        currencyConverter={new CurrencyConverter(this.currencyConversions)}
-        localCurrency="usd"
-      />
+      <div>
+        <Inventory
+          inventory={this.inventory}
+          currencyConverter={new CurrencyConverter(this.currencyConversions)}
+          localCurrency="usd"
+        />
+
+        <Cart
+          inventory={this.inventory}
+          currencyConverter={new CurrencyConverter(this.currencyConversions)}
+          localCurrency="usd"
+        />
+      </div>
     );
   }
 }
