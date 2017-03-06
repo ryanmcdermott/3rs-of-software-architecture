@@ -5,29 +5,29 @@ export default class Inventory extends Component {
     super();
     this.state = {
       localCurrency: 'usd',
-      inventory: [
-        {
+      inventory: {
+        1: {
           product: 'Flashlight',
           img: '/flashlight.jpg',
           desc: 'A really great flashlight',
           price: 100,
           currency: 'usd',
         },
-        {
+        2: {
           product: 'Tin can',
           img: '/tin_can.jpg',
           desc: 'Pretty much what you would expect from a tin can',
           price: 32,
           currency: 'usd',
         },
-        {
+        3: {
           product: 'Cardboard Box',
           img: '/cardboard_box.png',
           desc: 'It holds things',
           price: 5,
           currency: 'usd',
         },
-      ],
+      },
     };
   }
 
@@ -88,22 +88,27 @@ export default class Inventory extends Component {
                 Price
               </th>
             </tr>
-            {this.state.inventory.map((item, idx) => (
-              <tr key={idx}>
+
+            {Object.keys(this.state.inventory).map(itemId => (
+              <tr key={itemId}>
                 <td>
-                  {item.product}
+                  {this.state.inventory[itemId].product}
                 </td>
 
                 <td>
-                  <img src={item.img} alt="" />
+                  <img src={this.state.inventory[itemId].img} alt="" />
                 </td>
 
                 <td>
-                  {item.desc}
+                  {this.state.inventory[itemId].desc}
                 </td>
 
                 <td>
-                  {this.convertCurrency(item.price, item.currency, this.state.localCurrency)}
+                  {this.convertCurrency(
+                    this.state.inventory[itemId],
+                    this.state.inventory[itemId],
+                    this.state.localCurrency,
+                  )}
                 </td>
               </tr>
             ))}

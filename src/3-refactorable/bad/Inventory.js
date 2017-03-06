@@ -51,24 +51,25 @@ export default class Inventory extends Component {
                 Price
               </th>
             </tr>
-            {this.state.inventory.map((item, idx) => (
-              <tr key={idx}>
+
+            {Object.keys(this.state.inventory).map(itemId => (
+              <tr key={itemId}>
                 <td>
-                  {item.product}
+                  {this.state.inventory[itemId].product}
                 </td>
 
                 <td>
-                  <img src={item.img} alt="" />
+                  <img src={this.state.inventory[itemId].img} alt="" />
                 </td>
 
                 <td>
-                  {item.desc}
+                  {this.state.inventory[itemId].desc}
                 </td>
 
                 <td>
                   {this.CurrencyConverter.convert(
-                    item.price,
-                    item.currency,
+                    this.state.inventory[itemId].price,
+                    this.state.inventory[itemId].currency,
                     this.state.localCurrency,
                   )}
                 </td>

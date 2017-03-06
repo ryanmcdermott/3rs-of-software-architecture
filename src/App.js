@@ -34,7 +34,7 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      section: 'refactorable',
+      section: 'readable',
       quality: 'bad',
     };
   }

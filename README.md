@@ -2,7 +2,7 @@
 
 ![software architecture pyramid](public/software-architecture-pyramid.png)
 
-Code examples for Software Architecture Pyramid article
+Code examples for The 3 R's of Software Architecture
 
 ## Installation
 `npm install`
