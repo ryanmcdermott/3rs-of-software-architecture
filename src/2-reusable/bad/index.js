@@ -105,8 +105,8 @@ export default class Inventory extends Component {
 
                 <td>
                   {this.convertCurrency(
-                    this.state.inventory[itemId],
-                    this.state.inventory[itemId],
+                    this.state.inventory[itemId].price,
+                    this.state.inventory[itemId].currency,
                     this.state.localCurrency,
                   )}
                 </td>

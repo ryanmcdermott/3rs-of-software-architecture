@@ -17,6 +17,11 @@ export default class Inventory extends Component {
     });
   }
 
+  onAddToCart(itemId) {
+    console.warn(itemId);
+    window.cart.push(itemId);
+  }
+
   render() {
     return (
       <div>
@@ -50,6 +55,10 @@ export default class Inventory extends Component {
               <th>
                 Price
               </th>
+
+              <th>
+                Add to Cart
+              </th>
             </tr>
 
             {Object.keys(this.state.inventory).map(itemId => (
@@ -72,6 +81,12 @@ export default class Inventory extends Component {
                     this.state.inventory[itemId].currency,
                     this.state.localCurrency,
                   )}
+                </td>
+
+                <td>
+                  <button onClick={() => this.onAddToCart(itemId)}>
+                    Add to Cart
+                  </button>
                 </td>
               </tr>
             ))}
