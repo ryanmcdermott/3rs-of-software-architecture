@@ -14,6 +14,7 @@ export default class Inventory extends Component {
   }
 
   onSelectCurrency(e) {
+    window.localCurrency = e.target.value;
     this.setState({
       localCurrency: e.target.value,
     });
@@ -80,7 +81,7 @@ export default class Inventory extends Component {
                 </td>
 
                 <td>
-                  <button onClick={() => this.onAddToCart(itemId).bind(this)}>
+                  <button onClick={() => this.onAddToCart(itemId)}>
                     Add to Cart
                   </button>
                 </td>

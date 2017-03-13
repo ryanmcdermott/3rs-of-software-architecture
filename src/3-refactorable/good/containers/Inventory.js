@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import addToCart from '../actions';
+import { addToCart } from '../actions';
 
 import CurrencyConverter from '../lib/CurrencyConverter';
 import Inventory from '../components/Inventory';

@@ -4,9 +4,20 @@ export default class Cart extends Component {
   constructor(props) {
     super();
 
+    this.state = {
+      cart: props.cart,
+      inventory: props.inventory,
+      localCurrency: props.localCurrency,
+    };
+
     this.CurrencyConverter = props.currencyConverter;
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      cart: nextProps.cart,
+    });
+  }
   render() {
     return (
       <div>

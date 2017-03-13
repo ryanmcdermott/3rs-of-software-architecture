@@ -1,16 +1,15 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import addToCart from '../actions';
 
 import CurrencyConverter from '../lib/CurrencyConverter';
 import Cart from '../components/Cart';
 
-const CartContainer = ({ cart, addToCart }) => (
+const CartContainer = ({ cart }) => (
   <Cart
     cart={cart}
     currencyConverter={new CurrencyConverter(window.currencyConversions)}
+    localCurrency={window.localCurrency}
     inventory={window.inventory}
-    addToCart={productId => addToCart(productId)}
   />
 );
 
@@ -18,4 +17,4 @@ const mapStateToProps = state => ({
   cart: state.cart,
 });
 
-export default connect(mapStateToProps, { addToCart })(CartContainer);
+export default connect(mapStateToProps, {})(CartContainer);
