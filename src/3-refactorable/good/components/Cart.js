@@ -10,6 +10,7 @@ export default class Cart extends Component {
       localCurrency: props.localCurrency,
     };
 
+    console.warn(props);
     this.CurrencyConverter = props.currencyConverter;
   }
 

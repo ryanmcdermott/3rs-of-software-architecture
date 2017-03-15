@@ -10,15 +10,6 @@ export default class RefactorableGood extends Component {
   constructor(props) {
     super();
 
-    // Most likely we would fetch this from an external source if this were a real app
-    window.currencyConversions = {
-      usd: {
-        rupee: 66.78,
-        yuan: 6.87,
-        usd: 1,
-      },
-    };
-
     window.localCurrency = 'usd';
   }
 
