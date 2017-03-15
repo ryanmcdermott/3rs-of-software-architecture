@@ -8,6 +8,8 @@ export default class Inventory extends Component {
       inventory: props.inventory,
     };
 
+    console.warn(props);
+
     this.addToCart = props.addToCart;
 
     this.CurrencyConverter = props.currencyConverter;

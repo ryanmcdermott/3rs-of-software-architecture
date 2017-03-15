@@ -5,14 +5,16 @@ import { addToCart } from '../actions';
 import CurrencyConverter from '../lib/CurrencyConverter';
 import Inventory from '../components/Inventory';
 
-const InventoryContainer = ({ addToCart }) => (
+const InventoryContainer = ({ inventory, addToCart }) => (
   <Inventory
     currencyConverter={new CurrencyConverter(window.currencyConversions)}
-    inventory={window.inventory}
+    inventory={inventory}
     addToCart={productId => addToCart(productId)}
   />
 );
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  inventory: state.inventory,
+});
 
 export default connect(mapStateToProps, { addToCart })(InventoryContainer);
