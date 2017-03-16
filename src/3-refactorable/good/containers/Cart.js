@@ -13,11 +13,14 @@ const CartContainer = ({ cart, inventory, currencies, localCurrency }) => (
   />
 );
 
-const mapStateToProps = state => ({
-  cart: state.cart,
-  inventory: state.inventory,
-  currencies: state.currencies,
-  localCurrency: state.localCurrency,
-});
+const mapStateToProps = (state) => {
+  console.warn(state);
+  return {
+    cart: state.cart,
+    inventory: state.inventory,
+    currencies: state.currencies,
+    localCurrency: state.localCurrency,
+  };
+};
 
 export default connect(mapStateToProps, {})(CartContainer);

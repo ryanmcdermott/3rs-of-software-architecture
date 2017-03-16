@@ -13,8 +13,13 @@ export default class Inventory extends Component {
     this.CurrencyConverter = props.currencyConverter;
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      localCurrency: nextProps.localCurrency,
+    });
+  }
+
   onSelectCurrency(e) {
-    console.warn(e.target.value);
     this.changeCurrency(e.target.value);
   }
 

@@ -16,8 +16,10 @@ export default class Cart extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       cart: nextProps.cart,
+      localCurrency: nextProps.localCurrency,
     });
   }
+
   render() {
     return (
       <div>
