@@ -4,22 +4,18 @@ export default class Inventory extends Component {
   constructor(props) {
     super();
     this.state = {
-      localCurrency: window.localCurrency,
+      localCurrency: props.localCurrency,
       inventory: props.inventory,
     };
 
-    console.warn(props);
-
     this.addToCart = props.addToCart;
-
+    this.changeCurrency = props.changeCurrency;
     this.CurrencyConverter = props.currencyConverter;
   }
 
   onSelectCurrency(e) {
-    window.localCurrency = e.target.value;
-    this.setState({
-      localCurrency: e.target.value,
-    });
+    console.warn(e.target.value);
+    this.changeCurrency(e.target.value);
   }
 
   onAddToCart(itemId) {
@@ -57,6 +53,10 @@ export default class Inventory extends Component {
 
               <th>
                 Price
+              </th>
+
+              <th>
+                Cart
               </th>
             </tr>
 

@@ -9,8 +9,6 @@ const store = createStore(reducer);
 export default class RefactorableGood extends Component {
   constructor(props) {
     super();
-
-    window.localCurrency = 'usd';
   }
 
   render() {

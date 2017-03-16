@@ -9,8 +9,8 @@ const initialState = {
   2: {
     product: 'Tin can',
     img: '/tin_can.jpg',
-    desc: 'A ridiculously expensive tin can',
-    price: 42,
+    desc: 'Pretty much what you would expect from a tin can',
+    price: 32,
     currency: 'usd',
   },
   3: {

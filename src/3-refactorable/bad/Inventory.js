@@ -57,7 +57,7 @@ export default class Inventory extends Component {
               </th>
 
               <th>
-                Add to Cart
+                Cart
               </th>
             </tr>
 
