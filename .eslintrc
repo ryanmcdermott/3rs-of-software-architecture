@@ -6,6 +6,7 @@
   "extends": "airbnb",
   "rules": {
     "react/jsx-no-bind": "off",
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "react/forbid-prop-types": "off"
   }
 }

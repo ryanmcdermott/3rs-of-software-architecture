@@ -15,6 +15,14 @@ const InventoryContainer = ({ inventory, currencies, localCurrency, addToCart, c
   />
 );
 
+InventoryContainer.propTypes = {
+  currencies: React.PropTypes.object.isRequired,
+  inventory: React.PropTypes.object.isRequired,
+  localCurrency: React.PropTypes.string.isRequired,
+  changeCurrency: React.PropTypes.func,
+  addToCart: React.PropTypes.func,
+};
+
 const mapStateToProps = state => ({
   inventory: state.inventory,
   currencies: state.currencies,
