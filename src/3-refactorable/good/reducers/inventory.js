@@ -22,4 +22,4 @@ const initialState = {
   },
 };
 
-export default (state = initialState, action) => state;
+export default (state = initialState) => state;

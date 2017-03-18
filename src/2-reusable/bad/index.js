@@ -29,10 +29,8 @@ export default class Inventory extends Component {
         },
       },
     };
-  }
 
-  convertCurrency(amount, fromCurrency, toCurrency) {
-    let currencyConversions = {
+    this.currencyConversions = {
       usd: {
         rupee: 66.78,
         yuan: 6.87,
@@ -40,19 +38,22 @@ export default class Inventory extends Component {
       },
     };
 
-    let currencySymbols = {
+    this.currencySymbols = {
       usd: '$',
       rupee: '₹',
       yuan: '元',
     };
-
-    return currencySymbols[toCurrency] + amount * currencyConversions[fromCurrency][toCurrency];
   }
 
   onSelectCurrency(e) {
     this.setState({
       localCurrency: e.target.value,
     });
+  }
+
+  convertCurrency(amount, fromCurrency, toCurrency) {
+    const convertedCurrency = amount * this.currencyConversions[fromCurrency][toCurrency];
+    return this.currencySymbols[toCurrency] + convertedCurrency;
   }
 
   render() {

@@ -18,9 +18,12 @@ Software architecture is one of those nebulous concepts...
 If you wish to expand on this project or contribute, run the following commands before making changes:
 
 ```
+npm install -g create-react-app
 npm install
 npm run start
 ```
+
+Open a browser and see the app running at `http://localhost:3000/`
 
 ## Contributing
 Thank you for your contributions!

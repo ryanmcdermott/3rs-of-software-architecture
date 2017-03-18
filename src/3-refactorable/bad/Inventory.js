@@ -18,7 +18,6 @@ export default class Inventory extends Component {
   }
 
   onAddToCart(itemId) {
-    console.warn(itemId);
     window.cart.push(itemId);
   }
 
@@ -36,7 +35,6 @@ export default class Inventory extends Component {
           <option value="rupee">Rupee</option>
           <option value="yuan">Yuan</option>
         </select>
-        <h2>Inventory</h2>
         <table style={{ width: '100%' }}>
           <tbody>
             <tr>
