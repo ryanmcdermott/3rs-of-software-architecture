@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styles from './index.css';
 import classNames from 'classnames/bind';
 
 import ReadableBad from './1-readable/bad';
@@ -8,6 +7,7 @@ import ReusableBad from './2-reusable/bad';
 import ReusableGood from './2-reusable/good';
 import RefactorableBad from './3-refactorable/bad';
 import RefactorableGood from './3-refactorable/good';
+import styles from './index.css';
 
 const examples = {
   readable: {
