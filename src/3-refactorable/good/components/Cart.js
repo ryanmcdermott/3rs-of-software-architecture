@@ -61,6 +61,7 @@ class Cart extends Component {
 
 Cart.propTypes = {
   cart: React.PropTypes.array.isRequired,
+  currencyConverter: React.PropTypes.object.isRequired,
   inventory: React.PropTypes.object.isRequired,
   localCurrency: React.PropTypes.string.isRequired,
 };

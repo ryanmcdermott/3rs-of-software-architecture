@@ -42,8 +42,8 @@ class Cart extends Component {
                     Price
                   </th>
               </tr>
-              {this.state.cart.map(itemId => (
-                <tr key={`cartItem${itemId}`}>
+              {this.state.cart.map((itemId, idx) => (
+                <tr key={idx}>
                   <td>
                     {this.state.inventory[itemId].product}
                   </td>
