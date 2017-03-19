@@ -1,5 +1,5 @@
 {
-  "name": "software-architecture-pyramid",
+  "name": "3rs-of-software-architecture",
   "version": "0.0.1",
   "description": "Readability, Reusability, and Refactorability",
   "main": "index.js",
@@ -21,9 +21,9 @@
   "author": "Ryan McDermott",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ryanmcdermott/software-architecture-pyramid/issues"
+    "url": "https://github.com/ryanmcdermott/3rs-of-software-architecture/issues"
   },
-  "homepage": "https://github.com/ryanmcdermott/software-architecture-pyramid#readme",
+  "homepage": "https://github.com/ryanmcdermott/3rs-of-software-architecture#readme",
   "devDependencies": {
     "classnames": "^2.2.5",
     "eslint": "^3.16.1",
