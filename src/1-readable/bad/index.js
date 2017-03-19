@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 
+// Inventory
 class inv extends Component
 {
   constructor()
   {
     super();
+
+    // State
     this.state =
     {
-      c: 'usd',
-      i: [
+      c: 'usd', // currency
+      i: [ // inventory
         {
           product: 'Flashlight',
           img: '/flashlight.jpg',
           desc: "A really great flashlight",
           price: 100,
+          id: 1,
           c: 'usd'
         },
         {
@@ -21,6 +25,7 @@ class inv extends Component
           img: '/tin_can.jpg',
           desc: "Pretty much what you would expect from a tin can",
           price: 32,
+          id: 2,
           c: 'usd'
         },
         {
@@ -28,6 +33,7 @@ class inv extends Component
           img: '/cardboard_box.png',
           desc: "It holds things",
           price: 5,
+          id: 3,
           c: 'usd'
         }
       ]

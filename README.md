@@ -39,9 +39,191 @@ There are a few easy rules to follow to fix many of these problems:
 * More than two levels of nesting can imply poor performance (in a loop), and it can be especially hard to read in long conditionals. Consider extracting  
 
 Let's take a look at this first piece of our shopping cart application, to see what bad readability looks like:
+```
+import React, { Component } from 'react';
+
+// Inventory
+class inv extends Component
+{
+  constructor()
+  {
+    super();
+
+    // State
+    this.state =
+    {
+      c: 'usd', // currency
+      i: [ // inventory
+        {
+          product: 'Flashlight',
+          img: '/flashlight.jpg',
+          desc: "A really great flashlight",
+          price: 100,
+          id: 1,
+          c: 'usd'
+        },
+        {
+          product: 'Tin can',
+          img: '/tin_can.jpg',
+          desc: "Pretty much what you would expect from a tin can",
+          price: 32,
+          id: 2,
+          c: 'usd'
+        },
+        {
+          product: 'Cardboard Box',
+          img: '/cardboard_box.png',
+          desc: "It holds things",
+          price: 5,
+          id: 3,
+          c: 'usd'
+        }
+      ]
+    }
+  }
+
+  render () {
+    return (
+      <table style={{width: '100%'}}>
+      <tbody>
+      <tr>
+      <th>
+        Product
+      </th>
+
+      <th>
+        Image
+      </th>
+
+      <th>
+        Description
+      </th>
+
+      <th>
+        Price
+      </th>
+      </tr>
+        {this.state.i.map(function(i, idx) {
+          return (
+            <tr key = {idx}>
+              <td>
+                {i.product}
+              </td>
+
+              <td>
+              <img src={i.img} alt=""/>
+              </td>
+
+              <td>
+              {i.desc}
+              </td>
+
+              <td>
+                {i.price}
+              </td>
+            </tr>
+          );
+        })}
+    </tbody>
+    </table>
+    );
+  }
+}
+
+export default inv;
+```
+There's a number of problems we can see right away:
+* Inconsistent and unpleasing formatting
+* Poorly named variables
+* Disorganized data structures (inventory not keyed by IDs)
+* Comments that are either unnecessary or serve the job of what a good variable name would
 
 Let's take a look at how we could improve it:
+```
+import React, { Component } from 'react';
 
+export default class Inventory extends Component {
+  constructor() {
+    super();
+    this.state = {
+      localCurrency: 'usd',
+      inventory: {
+        1: {
+          product: 'Flashlight',
+          img: '/flashlight.jpg',
+          desc: 'A really great flashlight',
+          price: 100,
+          currency: 'usd',
+        },
+        2: {
+          product: 'Tin can',
+          img: '/tin_can.jpg',
+          desc: 'Pretty much what you would expect from a tin can',
+          price: 32,
+          currency: 'usd',
+        },
+        3: {
+          product: 'Cardboard Box',
+          img: '/cardboard_box.png',
+          desc: 'It holds things',
+          price: 5,
+          currency: 'usd',
+        },
+      },
+    };
+  }
+
+  render() {
+    return (
+      <table style={{ width: '100%' }}>
+        <tbody>
+          <tr>
+            <th>
+              Product
+            </th>
+
+            <th>
+              Image
+            </th>
+
+            <th>
+              Description
+            </th>
+
+            <th>
+              Price
+            </th>
+          </tr>
+          {Object.keys(this.state.inventory).map(itemId => (
+            <tr key={itemId}>
+              <td>
+                {this.state.inventory[itemId].product}
+              </td>
+
+              <td>
+                <img src={this.state.inventory[itemId].img} alt="" />
+              </td>
+
+              <td>
+                {this.state.inventory[itemId].desc}
+              </td>
+
+              <td>
+                {this.state.inventory[itemId].price}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
+  }
+}
+```
+This improved code
+* Code is consistently formatted using the automatic formatter Prettier
+* Names are much more descriptive and it's easy to see we are looking at the beginnings of an Inventory application
+* Data structures are properly organized, in this case the Inventory is keyed by ID. Bad readability can mean bad performance. If we had wanted to get an item from our inventory in our bad code example we would have had an O(n) lookup time but with Inventory keyed by ID we get an O(1) lookup, which is MUCH faster for large inventories.
+* Comments are no longer needed because good naming serves to clarify the meaning of the code. Comments are needed when business logic is complex, despite all simplifications that can be made. Comments are also needed when documenting functions/modules.
 
 ## 2. Reusability
 ## 3. Refactorability
