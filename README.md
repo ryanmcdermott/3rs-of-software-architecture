@@ -16,11 +16,33 @@ While this definition and others can bring clarity to the elements that make up 
 ## What is This Project?
 This project attempts to analyze 3 "ilities" of software architecture (readability, reusability, and refactorability), and show how we can form better and better code by thinking through these concepts hierarchically.
 
-The code we will be looking at is written in JavaScript and makes use of two major libraries in the ecosystem: React and Redux. JavaScript and the aforementioned tools are by no means the only way to structure any particular application. They happen to be used by a lot of newcomers to the industry, and by many seasoned veterans, and this frequency of usage makes them a wonderful common language by which to discuss code quality. I hope you find this project helpful in thinking about code, and I hope it brings us just a little closer to defining software architecture.
+The code we will be looking at is a simple shopping cart application written in JavaScript, which makes use of two major libraries in the ecosystem: React and Redux. JavaScript and the aforementioned tools are by no means the only way to structure any particular application. They happen to be used by a lot of newcomers to the industry, and by many seasoned veterans, and this frequency of usage makes them a wonderful common language by which to discuss code quality. I hope you find this project helpful in thinking about code, and I hope it brings us just a little closer to defining software architecture.
 
 Without further ado, let's get started!
 
 ## 1. Readability
+Readability is the simplest way of measuring code quality and it's the simplest to fix. It is all about the most obvious things you see right when you open up a piece of code:
+
+* Formatting
+* Variable names
+* Function names
+* Amount of function arguments
+* Function length (number of lines)
+* Nesting levels
+
+There are a few easy rules to follow to fix many of these problems:
+
+* Invest in an automatic formatter. Find one your team agrees on and integrate it into your build process. There's nothing that wastes more time and money during code reviews than formatting arguments. Get a formatter and never look back! In this project we will use Prettier.
+* Use meaningful and pronounceable variable/function names. Code is for people, and only incidentally for computers. Naming is the biggest thing that communicates the meaning behind the code.
+* Limit your function arguments to between 1-3. 0 arguments implies you're mutating state or relying on state coming from somewhere else other than your caller. More than 3 arguments is just plain hard to read!
+* There is no set number of lines that a function should be under, as this depends on what particular language you are coding in. The main point is that your function should do ONE thing, and ONE thing only. If your function, which calculates the price of an item after taxes, first has to connect to the database, look up the item, get the tax data, and then do the calculation, then it's clearly doing more than one thing. Long functions typically indicate too much is happening.
+* More than two levels of nesting can imply poor performance (in a loop), and it can be especially hard to read in long conditionals. Consider extracting  
+
+Let's take a look at this first piece of our shopping cart application, to see what bad readability looks like:
+
+Let's take a look at how we could improve it:
+
+
 ## 2. Reusability
 ## 3. Refactorability
 
