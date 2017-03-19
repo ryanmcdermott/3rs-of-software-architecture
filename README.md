@@ -1,4 +1,4 @@
-# 3Rs-of-software-architecture
+# 3 R's-of-software-architecture
 
 ![software architecture pyramid](public/software-architecture-pyramid.png)
 
