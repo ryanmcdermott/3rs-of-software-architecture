@@ -9,7 +9,8 @@ export default class CurrencyConverter {
   }
 
   convert(amount, fromCurrency, toCurrency) {
-    const convertedCurreny = amount * this.currencyConversions[fromCurrency][toCurrency];
+    const convertedCurreny = amount *
+      this.currencyConversions[fromCurrency][toCurrency];
     return this.currencySymbols[toCurrency] + convertedCurreny;
   }
 }

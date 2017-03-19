@@ -27,33 +27,33 @@ class Cart extends Component {
         {this.state.cart.length === 0
           ? <p>Nothing in the cart</p>
           : <table style={{ width: '100%' }}>
-            <tbody>
-              <tr>
-                <th>
+              <tbody>
+                <tr>
+                  <th>
                     Product
                   </th>
 
-                <th>
+                  <th>
                     Price
                   </th>
-              </tr>
-              {this.state.cart.map((itemId, idx) => (
-                <tr key={idx}>
-                  <td>
-                    {this.state.inventory[itemId].product}
-                  </td>
+                </tr>
+                {this.state.cart.map((itemId, idx) => (
+                  <tr key={idx}>
+                    <td>
+                      {this.state.inventory[itemId].product}
+                    </td>
 
-                  <td>
-                    {this.CurrencyConverter.convert(
+                    <td>
+                      {this.CurrencyConverter.convert(
                         this.state.inventory[itemId].price,
                         this.state.inventory[itemId].currency,
                         this.state.localCurrency,
                       )}
-                  </td>
-                </tr>
+                    </td>
+                  </tr>
                 ))}
-            </tbody>
-          </table>}
+              </tbody>
+            </table>}
       </div>
     );
   }

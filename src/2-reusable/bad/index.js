@@ -52,7 +52,8 @@ export default class Inventory extends Component {
   }
 
   convertCurrency(amount, fromCurrency, toCurrency) {
-    const convertedCurrency = amount * this.currencyConversions[fromCurrency][toCurrency];
+    const convertedCurrency = amount *
+      this.currencyConversions[fromCurrency][toCurrency];
     return this.currencySymbols[toCurrency] + convertedCurrency;
   }
 
