@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Cart extends Component {
+class Cart extends Component {
   constructor(props) {
     super();
 
@@ -58,3 +58,11 @@ export default class Cart extends Component {
     );
   }
 }
+
+Cart.propTypes = {
+  cart: React.PropTypes.array.isRequired,
+  inventory: React.PropTypes.object.isRequired,
+  localCurrency: React.PropTypes.string.isRequired,
+};
+
+export default Cart;

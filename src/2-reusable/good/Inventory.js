@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Inventory extends Component {
+class Inventory extends Component {
   constructor(props) {
     super();
     this.state = {
@@ -80,3 +80,11 @@ export default class Inventory extends Component {
     );
   }
 }
+
+Inventory.propTypes = {
+  inventory: React.PropTypes.object.isRequired,
+  currencyConverter: React.PropTypes.object.isRequired,
+  localCurrency: React.PropTypes.string.isRequired,
+};
+
+export default Inventory;

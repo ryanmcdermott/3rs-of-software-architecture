@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Cart extends Component {
+class Cart extends Component {
   constructor(props) {
     super();
     this.state = {
@@ -9,8 +9,8 @@ export default class Cart extends Component {
       inventory: props.inventory,
     };
 
-    // Repeatedly sync local cart to global cart. Bad!
-    window.setInterval(
+    // Repeatedly sync global cart to local cart. Bad!
+    this.watcher = window.setInterval(
       () => {
         this.setState({
           cart: window.cart,
@@ -19,6 +19,10 @@ export default class Cart extends Component {
       1000,
     );
     this.CurrencyConverter = props.currencyConverter;
+  }
+
+  componentWillUnmount() {
+    window.clearInterval(this.watcher);
   }
 
   render() {
@@ -38,8 +42,8 @@ export default class Cart extends Component {
                     Price
                   </th>
               </tr>
-              {this.state.cart.map((itemId, idx) => (
-                <tr key={idx}>
+              {this.state.cart.map(itemId => (
+                <tr key={`cartItem${itemId}`}>
                   <td>
                     {this.state.inventory[itemId].product}
                   </td>
@@ -59,3 +63,11 @@ export default class Cart extends Component {
     );
   }
 }
+
+Cart.propTypes = {
+  inventory: React.PropTypes.object.isRequired,
+  localCurrency: React.PropTypes.string.isRequired,
+  currencyConverter: React.PropTypes.object.isRequired,
+};
+
+export default Cart;

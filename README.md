@@ -31,7 +31,7 @@ Thank you for your contributions!
 Before opening a friendly Pull Request, make sure you run the following and resolve any errors noted by the linter:
 
 ```
-npm run prettier
+npm run fmt
 npm run lint
 ```
 

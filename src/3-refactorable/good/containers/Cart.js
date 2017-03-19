@@ -13,6 +13,13 @@ const CartContainer = ({ cart, inventory, currencies, localCurrency }) => (
   />
 );
 
+CartContainer.propTypes = {
+  currencies: React.PropTypes.object.isRequired,
+  cart: React.PropTypes.array.isRequired,
+  inventory: React.PropTypes.object.isRequired,
+  localCurrency: React.PropTypes.string.isRequired,
+};
+
 const mapStateToProps = state => ({
   cart: state.cart,
   inventory: state.inventory,

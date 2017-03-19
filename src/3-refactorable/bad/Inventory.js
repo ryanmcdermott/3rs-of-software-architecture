@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Inventory extends Component {
+class Inventory extends Component {
   constructor(props) {
     super();
     this.state = {
@@ -9,6 +9,7 @@ export default class Inventory extends Component {
     };
 
     this.CurrencyConverter = props.currencyConverter;
+    this.cart = window.cart;
   }
 
   onSelectCurrency(e) {
@@ -18,7 +19,7 @@ export default class Inventory extends Component {
   }
 
   onAddToCart(itemId) {
-    window.cart.push(itemId);
+    this.cart.push(itemId);
   }
 
   render() {
@@ -94,3 +95,11 @@ export default class Inventory extends Component {
     );
   }
 }
+
+Inventory.propTypes = {
+  inventory: React.PropTypes.object.isRequired,
+  localCurrency: React.PropTypes.string.isRequired,
+  currencyConverter: React.PropTypes.object.isRequired,
+};
+
+export default Inventory;
