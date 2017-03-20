@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
-    "lint": "node ./node_modules/eslint/bin/eslint.js ./",
+    "lint": "node ./node_modules/eslint/bin/eslint.js ./src",
     "fmt": "node ./node_modules/prettier/bin/prettier.js --single-quote --trailing-comma all --write '{src/1-readable/good/**/*.js,src/2-reusable/**/*.js,src/3-refactorable/**/*.js}'",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom",
+    "build": "react-scripts build"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   "homepage": "https://github.com/ryanmcdermott/3rs-of-software-architecture#readme",
   "devDependencies": {
     "classnames": "^2.2.5",
+    "enzyme": "^2.7.1",
     "eslint": "^3.16.1",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
@@ -33,6 +34,7 @@
     "eslint-plugin-react": "^6.10.0",
     "node-sass": "^3.8.0",
     "prettier": "0.22.0",
+    "react-addons-test-utils": "^15.4.2",
     "react-scripts": "0.9.2",
     "sass-loader": "^4.0.0"
   },

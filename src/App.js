@@ -55,7 +55,9 @@ export default class App extends Component {
     return (
       <div className="container">
         <div className="row">
-          <h2 className={titleClass}>Software Architecture Pyramid</h2>
+          <h2 className={titleClass}>
+            3 Rs of Software Architecture
+          </h2>
         </div>
 
         <div className="row">

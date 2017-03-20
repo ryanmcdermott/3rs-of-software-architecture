@@ -36,7 +36,7 @@ There are a few easy rules to follow to fix many of these problems:
 * Use meaningful and pronounceable variable/function names. Code is for people, and only incidentally for computers. Naming is the biggest thing that communicates the meaning behind the code.
 * Limit your function arguments to between 1-3. 0 arguments implies you're mutating state or relying on state coming from somewhere else other than your caller. More than 3 arguments is just plain hard to read!
 * There is no set number of lines that a function should be under, as this depends on what particular language you are coding in. The main point is that your function should do ONE thing, and ONE thing only. If your function, which calculates the price of an item after taxes, first has to connect to the database, look up the item, get the tax data, and then do the calculation, then it's clearly doing more than one thing. Long functions typically indicate too much is happening.
-* More than two levels of nesting can imply poor performance (in a loop), and it can be especially hard to read in long conditionals. Consider extracting  
+* More than two levels of nesting can imply poor performance (in a loop), and it can be especially hard to read in long conditionals. Consider extracting nested logic into separate functions.
 
 Let's take a look at this first piece of our shopping cart application, to see what bad readability looks like:
 ```
@@ -222,7 +222,7 @@ export default class Inventory extends Component {
 This improved code
 * Code is consistently formatted using the automatic formatter Prettier
 * Names are much more descriptive and it's easy to see we are looking at the beginnings of an Inventory application
-* Data structures are properly organized, in this case the Inventory is keyed by ID. Bad readability can mean bad performance. If we had wanted to get an item from our inventory in our bad code example we would have had an O(n) lookup time but with Inventory keyed by ID we get an O(1) lookup, which is MUCH faster for large inventories.
+* Data structures are properly organized, in this case the Inventory is keyed by ID. Bad readability can mean bad performance. If we had wanted to get an item from our inventory in our bad code example we would have had an O(n) lookup time but with Inventory keyed by ID we get an O(1) lookup, which is MUCH faster.
 * Comments are no longer needed because good naming serves to clarify the meaning of the code. Comments are needed when business logic is complex, despite all simplifications that can be made. Comments are also needed when documenting functions/modules.
 
 ## 2. Reusability
