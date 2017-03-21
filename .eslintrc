@@ -8,6 +8,7 @@
     "react/jsx-no-bind": "off",
     "react/jsx-filename-extension": "off",
     "react/forbid-prop-types": "off",
-    "react/no-array-index-key": "off"
+    "react/no-array-index-key": "off",
+    "react/jsx-indent": "off"
   }
 }

@@ -16,7 +16,7 @@ While this definition and others can bring clarity to the elements that make up 
 ## What is This Project?
 This project attempts to analyze 3 "ilities" of software architecture (readability, reusability, and refactorability), and show how we can form better and better code by thinking through these concepts hierarchically.
 
-The code we will be looking at is a simple shopping cart application written in JavaScript, which makes use of two major libraries in the ecosystem: React and Redux. JavaScript and the aforementioned tools are by no means the only way to structure any particular application. They happen to be used by a lot of newcomers to the industry, and by many seasoned veterans, and this frequency of usage makes them a wonderful common language by which to discuss code quality. I hope you find this project helpful in thinking about code, and I hope it brings us just a little closer to defining software architecture.
+The code we will be looking at is a simple shopping cart application written in JavaScript, which makes use of two major libraries in the ecosystem: React and Redux. JavaScript and the aforementioned tools are by no means the only way to structure any particular application. They happen to be used by a lot of newcomers to the industry, and by many seasoned veterans, and this frequency of usage makes them a wonderful common language by which to discuss code quality. This isn't the only way to look at software, and it certainly can't give you an architecture, but it's something that can hopefully guide your thinking, as it has guided mine.
 
 Without further ado, let's get started!
 
