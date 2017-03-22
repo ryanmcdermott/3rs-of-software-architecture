@@ -21,7 +21,7 @@ The code we will be looking at is a simple shopping cart application written in 
 Without further ado, let's get started!
 
 ## 1. Readability
-Readability is the simplest way of measuring code quality and it's the simplest to fix. It is all about the most obvious things you see right when you open up a piece of code:
+Readability is the simplest way of assessing code quality and it's the most straightforward to fix. It the most obvious thing you see right when you open up a piece of code, and it consists of:
 
 * Formatting
 * Variable names
@@ -30,7 +30,7 @@ Readability is the simplest way of measuring code quality and it's the simplest 
 * Function length (number of lines)
 * Nesting levels
 
-There are a few easy rules to follow to fix many of these problems:
+There are a few easy rules to follow to fix problems associated with those:
 
 * Invest in an automatic formatter. Find one your team agrees on and integrate it into your build process. There's nothing that wastes more time and money during code reviews than formatting arguments. Get a formatter and never look back! In this project we will use Prettier.
 * Use meaningful and pronounceable variable/function names. Code is for people, and only incidentally for computers. Naming is the biggest thing that communicates the meaning behind the code.
@@ -39,7 +39,7 @@ There are a few easy rules to follow to fix many of these problems:
 * More than two levels of nesting can imply poor performance (in a loop), and it can be especially hard to read in long conditionals. Consider extracting nested logic into separate functions.
 
 Let's take a look at this first piece of our shopping cart application, to see what bad readability looks like:
-```
+```javascript
 import React, { Component } from 'react';
 
 // Inventory
@@ -132,14 +132,14 @@ class inv extends Component
 
 export default inv;
 ```
-There's a number of problems we can see right away:
+There are a number of problems we can see right away:
 * Inconsistent and unpleasing formatting
 * Poorly named variables
 * Disorganized data structures (inventory not keyed by IDs)
 * Comments that are either unnecessary or serve the job of what a good variable name would
 
 Let's take a look at how we could improve it:
-```
+```javascript
 import React, { Component } from 'react';
 
 export default class Inventory extends Component {
@@ -219,7 +219,7 @@ export default class Inventory extends Component {
   }
 }
 ```
-This improved code
+This improved code now exhibits the following features:
 * Code is consistently formatted using the automatic formatter Prettier
 * Names are much more descriptive and it's easy to see we are looking at the beginnings of an Inventory application
 * Data structures are properly organized, in this case the Inventory is keyed by ID. Bad readability can mean bad performance. If we had wanted to get an item from our inventory in our bad code example we would have had an O(n) lookup time but with Inventory keyed by ID we get an O(1) lookup, which is MUCH faster.
