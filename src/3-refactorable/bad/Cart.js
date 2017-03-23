@@ -9,7 +9,7 @@ class Cart extends Component {
       inventory: props.inventory,
     };
 
-    // Repeatedly sync global cart to local cart. Bad!
+    // Repeatedly sync global cart to local cart
     this.watcher = window.setInterval(
       () => {
         this.setState({

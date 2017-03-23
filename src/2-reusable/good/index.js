@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CurrencyConverter from './CurrencyConverter';
 import Inventory from './Inventory';
+import CurrencySelector from './CurrencySelector';
 
 export default class ReusableGood extends Component {
   constructor() {
@@ -38,15 +39,31 @@ export default class ReusableGood extends Component {
         usd: 1,
       },
     };
+
+    this.state = {
+      localCurrency: 'usd',
+    };
+
+    this.setGlobalCurrency = (currency) => {
+      this.setState({
+        localCurrency: currency,
+      });
+    };
   }
 
   render() {
     return (
-      <Inventory
-        inventory={this.inventory}
-        currencyConverter={new CurrencyConverter(this.currencyConversions)}
-        localCurrency="usd"
-      />
+      <div>
+        <CurrencySelector
+          setGlobalCurrency={this.setGlobalCurrency}
+          localCurrency={this.state.localCurrency}
+        />
+        <Inventory
+          inventory={this.inventory}
+          currencyConverter={new CurrencyConverter(this.currencyConversions)}
+          localCurrency={this.state.localCurrency}
+        />
+      </div>
     );
   }
 }

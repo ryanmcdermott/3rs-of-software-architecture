@@ -11,26 +11,15 @@ class Inventory extends Component {
     this.CurrencyConverter = props.currencyConverter;
   }
 
-  onSelectCurrency(e) {
+  componentWillReceiveProps(nextProps) {
     this.setState({
-      localCurrency: e.target.value,
+      localCurrency: nextProps.localCurrency,
     });
   }
 
   render() {
     return (
       <div>
-        <label htmlFor="currencySelector">Currency:</label>
-        <select
-          className="u-full-width"
-          id="currencySelector"
-          onChange={this.onSelectCurrency.bind(this)}
-          value={this.state.localCurrency}
-        >
-          <option value="usd">USD</option>
-          <option value="rupee">Rupee</option>
-          <option value="yuan">Yuan</option>
-        </select>
         <table style={{ width: '100%' }}>
           <tbody>
             <tr>
