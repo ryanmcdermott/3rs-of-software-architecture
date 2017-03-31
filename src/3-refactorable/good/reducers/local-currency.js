@@ -1,4 +1,4 @@
-import { CHANGE_CURRENCY } from '../constants/ActionTypes';
+import { CHANGE_CURRENCY } from '../constants/action-types';
 
 const initialState = 'usd';
 

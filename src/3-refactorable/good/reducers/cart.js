@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from '../constants/ActionTypes';
+import { ADD_TO_CART } from '../constants/action-types';
 
 const initialState = [];
 

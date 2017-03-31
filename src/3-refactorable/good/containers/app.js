@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Inventory from '../containers/Inventory';
-import Cart from '../containers/Cart';
+import Inventory from '../containers/inventory';
+import Cart from '../containers/cart';
 
 const App = () => (
   <div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import CurrencyConverter from './CurrencyConverter';
-import Inventory from './Inventory';
-import CurrencySelector from './CurrencySelector';
+import CurrencyConverter from './currency-converter';
+import Inventory from './inventory';
+import CurrencySelector from './currency-selector';
 
 export default class ReusableGood extends Component {
   constructor() {

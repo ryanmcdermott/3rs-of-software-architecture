@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import CurrencyConverter from '../lib/CurrencyConverter';
-import Cart from '../components/Cart';
+import CurrencyConverter from '../lib/currency-converter';
+import Cart from '../components/cart';
 
 const CartContainer = ({ cart, inventory, currencies, localCurrency }) => (
   <Cart

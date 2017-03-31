@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Inventory from '../src/3-refactorable/good/components/Inventory';
+import Inventory from '../src/3-refactorable/good/components/inventory';
 
 const props = {
   localCurrency: 'usd',

@@ -1,4 +1,4 @@
-import CurrencyConverter from '../src/3-refactorable/good/lib/CurrencyConverter';
+import CurrencyConverter from '../src/3-refactorable/good/lib/currency-converter';
 
 it('should convert currencies', () => {
   const currencyConversions = {

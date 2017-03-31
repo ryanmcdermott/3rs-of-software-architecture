@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import CurrencyConverter from './CurrencyConverter';
-import Inventory from './Inventory';
-import Cart from './Cart';
+import CurrencyConverter from './currency-converter';
+import Inventory from './inventory';
+import Cart from './cart';
 
 export default class RefactorableBad extends Component {
   constructor() {

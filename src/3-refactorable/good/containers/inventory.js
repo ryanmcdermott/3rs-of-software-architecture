@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addToCartAction, changeCurrencyAction } from '../actions';
 
-import CurrencyConverter from '../lib/CurrencyConverter';
-import Inventory from '../components/Inventory';
+import CurrencyConverter from '../lib/currency-converter';
+import Inventory from '../components/inventory';
 
 const InventoryContainer = (
   {
