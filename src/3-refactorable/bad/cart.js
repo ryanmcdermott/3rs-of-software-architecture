@@ -24,6 +24,12 @@ class Cart extends Component {
   componentWillUnmount() {
     window.clearInterval(this.watcher);
   }
+  
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      localCurrency: nextProps.localCurrency,
+    });
+  }
 
   render() {
     return (

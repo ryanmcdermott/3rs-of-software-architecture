@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CurrencyConverter from './currency-converter';
+import CurrencySelector from './currency-selector';
 import Inventory from './inventory';
 import Cart from './cart';
 
@@ -41,21 +42,36 @@ export default class RefactorableBad extends Component {
         usd: 1,
       },
     };
+
+    this.state = {
+      localCurrency: 'usd',
+    };
+
+    this.setGlobalCurrency = (currency) => {
+      this.setState({
+        localCurrency: currency,
+      });
+    };
   }
 
   render() {
     return (
       <div>
+        <CurrencySelector
+          setGlobalCurrency={this.setGlobalCurrency}
+          localCurrency={this.state.localCurrency}
+        />
+
         <Inventory
           inventory={this.inventory}
           currencyConverter={new CurrencyConverter(this.currencyConversions)}
-          localCurrency="usd"
+          localCurrency={this.state.localCurrency}
         />
 
         <Cart
           inventory={this.inventory}
           currencyConverter={new CurrencyConverter(this.currencyConversions)}
-          localCurrency="usd"
+          localCurrency={this.state.localCurrency}
         />
       </div>
     );
