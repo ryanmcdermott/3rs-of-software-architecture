@@ -611,6 +611,28 @@ Now, it's time for a bit of caution. Before diving in and making everything reus
 * You don't expect to reuse your function or module in the near future.
 
 ## 3. Refactorability
+Code that is refactorable is code that you can change without fear. It's code that you can deploy on a Friday night, and come back to on Monday morning without any concern that your users encountered runtime errors.
+
+Refactorability is about the system as a whole. It's about how your reusable modules connect together like LEGO pieces. If you change your Employee module and somehow it breaks your Reporting module, then you know you have some refactorability issues. Refactorability is the highest piece of the 3 R hierarchy, and it's the hardest to achieve and maintain. There will always be issues with any human system, and code is no different. However, there are things that we can do to make our code refactorable. So, what are they?
+
+* Isolated side effects
+* Tests
+* Static types
+
+We are using JavaScript, and not a typed alternative such as TypeScript, so we won't be able to see how static types can help. Suffice it to say, when your code has types such as you see below, you know that nobody can pass incorrect values to your code, which limits the number of possible errors your app can experience:
+
+```javascript
+// We can't get passed arrays, strings, objects, or any type other than a number
+function add(a : number, b : number) {
+  return a + b;
+}
+```
+
+I highly recommend using a statically typed alternative to JavaScript for large applications. Types give you extra confidence beyond what your tests can provide. But types won't help everything, you still need to isolate your side effects and test your code.
+
+You might be wondering what does it mean to isolate your side effects. And, what are side effects even?
+
+
 
 --------------------------------------------------------------------------------
 ## Development
