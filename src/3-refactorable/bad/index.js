@@ -47,7 +47,7 @@ export default class RefactorableBad extends Component {
       localCurrency: 'usd',
     };
 
-    this.setGlobalCurrency = (currency) => {
+    this.setGlobalCurrency = currency => {
       this.setState({
         localCurrency: currency,
       });

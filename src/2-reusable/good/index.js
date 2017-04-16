@@ -44,7 +44,7 @@ export default class ReusableGood extends Component {
       localCurrency: 'usd',
     };
 
-    this.setGlobalCurrency = (currency) => {
+    this.setGlobalCurrency = currency => {
       this.setState({
         localCurrency: currency,
       });

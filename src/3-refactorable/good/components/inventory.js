@@ -9,7 +9,6 @@ class Inventory extends Component {
     };
 
     this.addToCart = props.addToCart;
-    this.changeCurrency = props.changeCurrency;
     this.CurrencyConverter = props.currencyConverter;
   }
 
@@ -19,10 +18,6 @@ class Inventory extends Component {
     });
   }
 
-  onSelectCurrency(e) {
-    this.changeCurrency(e.target.value);
-  }
-
   onAddToCart(itemId) {
     this.addToCart(itemId);
   }
@@ -30,17 +25,6 @@ class Inventory extends Component {
   render() {
     return (
       <div>
-        <label htmlFor="currencySelector">Currency:</label>
-        <select
-          className="u-full-width"
-          id="currencySelector"
-          onChange={this.onSelectCurrency.bind(this)}
-          value={this.state.localCurrency}
-        >
-          <option value="usd">USD</option>
-          <option value="rupee">Rupee</option>
-          <option value="yuan">Yuan</option>
-        </select>
         <table style={{ width: '100%' }}>
           <tbody>
             <tr>

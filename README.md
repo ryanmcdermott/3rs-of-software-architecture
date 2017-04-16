@@ -1,9 +1,8 @@
-# 3 R's of Software Architecture
+# 3 Rs of Software Architecture
 
 ![software architecture pyramid](public/software-architecture-pyramid.png)
 
 ## Software Architecture
-Software architecture is like happiness -- we all want it, but it can be very hard to define how to get it or what it even looks like. When we have it though, we can't imagine living without it.
 
 After 50+ years of software engineering's existence, we haven't settled on an exact definition of what software architecture is. After all, it is the art in computer science -- persistently evading our most determined of efforts to define it. Even still, it's so vital to the fabric of our industry and applications, that it's impossible to ignore.
 
@@ -228,9 +227,9 @@ This improved code now exhibits the following features:
 * Comments are no longer needed because good naming serves to clarify the meaning of the code. Comments are needed when business logic is complex, despite all simplifications that can be made. Comments are also needed when documenting functions/modules.
 
 ## 2. Reusability
-Reusability is more important to the world than it is to just software itself. It is the sole reason you are able to read this code, communicate with strangers online, and even program at all. Reusability allows us to express new ideas with little pieces of the past.
+Reusability is the sole reason you are able to read this code, communicate with strangers online, and even program at all. Reusability allows us to express new ideas with little pieces of the past.
 
-That is why reusability is such an essential concept that should guide your software architecture. We commonly think of reusability in terms of DRY (Don't Repeat Yourself). That is one aspect of it -- don't have duplicate code if you can abstract it. Reusability goes beyond that though. It's about making clean, simple APIs that when your fellow programmer reads them, they say "Yep, I know exactly what that does!" Reusability makes your code a delight to work with, and means you can ship features faster.
+That is why reusability is such an essential concept that should guide your software architecture. We commonly think of reusability in terms of DRY (Don't Repeat Yourself). That is one aspect of it -- don't have duplicate code if you can abstract it properly. Reusability goes beyond that though. It's about making clean, simple APIs that when your fellow programmer reads them, they say "Yep, I know exactly what that does!" Reusability makes your code a delight to work with, and means you can ship features faster.
 
 We will look at our previous example and expand upon it by adding a currency converter to handle our inventory's pricing in multiple countries:
 
