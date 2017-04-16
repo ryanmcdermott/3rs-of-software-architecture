@@ -21,14 +21,14 @@ class Cart extends Component {
     this.CurrencyConverter = props.currencyConverter;
   }
 
-  componentWillUnmount() {
-    window.clearInterval(this.watcher);
-  }
-
   componentWillReceiveProps(nextProps) {
     this.setState({
       localCurrency: nextProps.localCurrency,
     });
+  }
+
+  componentWillUnmount() {
+    window.clearInterval(this.watcher);
   }
 
   render() {

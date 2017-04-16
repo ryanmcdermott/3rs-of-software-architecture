@@ -88,7 +88,6 @@ class Inventory extends Component {
 Inventory.propTypes = {
   inventory: React.PropTypes.object.isRequired,
   localCurrency: React.PropTypes.string.isRequired,
-  changeCurrency: React.PropTypes.func.isRequired,
   currencyConverter: React.PropTypes.object.isRequired,
   addToCart: React.PropTypes.func.isRequired,
 };

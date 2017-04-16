@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToCartAction, changeCurrencyAction } from '../actions';
+import { addToCartAction } from '../actions';
 
 import CurrencyConverter from '../lib/currency-converter';
 import Inventory from '../components/inventory';
@@ -11,14 +11,12 @@ const InventoryContainer = (
     currencies,
     localCurrency,
     addToCart,
-    changeCurrency,
   },
 ) => (
   <Inventory
     currencyConverter={new CurrencyConverter(currencies)}
     inventory={inventory}
     localCurrency={localCurrency}
-    changeCurrency={currency => changeCurrency(currency)}
     addToCart={productId => addToCart(productId)}
   />
 );
@@ -27,7 +25,6 @@ InventoryContainer.propTypes = {
   currencies: React.PropTypes.object.isRequired,
   inventory: React.PropTypes.object.isRequired,
   localCurrency: React.PropTypes.string.isRequired,
-  changeCurrency: React.PropTypes.func.isRequired,
   addToCart: React.PropTypes.func.isRequired,
 };
 
@@ -39,5 +36,4 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   addToCart: addToCartAction,
-  changeCurrency: changeCurrencyAction,
 })(InventoryContainer);
