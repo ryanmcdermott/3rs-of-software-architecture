@@ -630,9 +630,217 @@ function add(a : number, b : number) {
 
 I highly recommend using a statically typed alternative to JavaScript for large applications. Types give you extra confidence beyond what your tests can provide. But types won't help everything, you still need to isolate your side effects and test your code.
 
-You might be wondering what does it mean to isolate your side effects. And, what are side effects even?
+You might be wondering, what does it mean to isolate your side effects? And you might be asking what are side effects even?
+
+A side effect is when your function or module modifies data outside the scope of itself. If you are writing data to a disk, changing a global variable, or even printing something to the terminal, you have a side effect. Now, if your program has no side effects at all then it's a black box. Programs are instructions that a computer executes which take data in and produce data out. If there's no data coming out, a program isn't useful. But, for a program to produce data it has to modify something in the world outside itself. For this reason, we need side effects, but we need to isolate them.
+
+Now, why should we isolate side effects?
+* Side effects make our code hard to test, because if a function's execution modifies some data that another function depends on then we can't be sure that a function will always give the same output with the same given input.
+* Side effects introduce coupling between otherwise reusable modules. If module A modifies some global state that module B depends on, then A has to be run before B.
+* Side effects make our system unpredictable. If any function or module can manipulate the state of the application, then we can't be sure how us updating one module will affect the whole system.
+
+How do we isolate side effects though? The answer is by making one central place to update global state of our application. There are many great ways to do this for a client-side JavaScript application, but for this project we will use Redux.
+
+We will modify our existing code to incorporate a shopping cart. Let's take a look at this new code and see why it's not refactorable:
+
+```javascript
+// src/3-refactorable/bad/inventory.js
+import React, { Component } from 'react';
+
+class Inventory extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      localCurrency: props.localCurrency,
+      inventory: props.inventory,
+    };
+
+    this.CurrencyConverter = props.currencyConverter;
+    this.cart = window.cart;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      localCurrency: nextProps.localCurrency,
+    });
+  }
+
+  onAddToCart(itemId) {
+    this.cart.push(itemId);
+  }
+
+  render() {
+    return (
+      <div>
+        <table style={{ width: '100%' }}>
+          <tbody>
+            <tr>
+              <th>
+                Product
+              </th>
+
+              <th>
+                Image
+              </th>
+
+              <th>
+                Description
+              </th>
+
+              <th>
+                Price
+              </th>
+
+              <th>
+                Cart
+              </th>
+            </tr>
+
+            {Object.keys(this.state.inventory).map(itemId => (
+              <tr key={itemId}>
+                <td>
+                  {this.state.inventory[itemId].product}
+                </td>
+
+                <td>
+                  <img src={this.state.inventory[itemId].img} alt="" />
+                </td>
+
+                <td>
+                  {this.state.inventory[itemId].desc}
+                </td>
+
+                <td>
+                  {this.CurrencyConverter.convert(
+                    this.state.inventory[itemId].price,
+                    this.state.inventory[itemId].currency,
+                    this.state.localCurrency,
+                  )}
+                </td>
+
+                <td>
+                  <button onClick={() => this.onAddToCart(itemId)}>
+                    Add to Cart
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+}
+
+Inventory.propTypes = {
+  inventory: React.PropTypes.object.isRequired,
+  localCurrency: React.PropTypes.string.isRequired,
+  currencyConverter: React.PropTypes.object.isRequired,
+};
+
+export default Inventory;
+```
+
+```javascript
+// src/3-refactorable/bad/cart.js
+import React, { Component } from 'react';
+
+class Cart extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      cart: window.cart,
+      localCurrency: props.localCurrency,
+      inventory: props.inventory,
+    };
+
+    // Repeatedly sync global cart to local cart
+    this.watcher = window.setInterval(
+      () => {
+        this.setState({
+          cart: window.cart,
+        });
+      },
+      1000,
+    );
+    this.CurrencyConverter = props.currencyConverter;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      localCurrency: nextProps.localCurrency,
+    });
+  }
+
+  componentWillUnmount() {
+    window.clearInterval(this.watcher);
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>Cart</h2>
+        {this.state.cart.length === 0
+          ? <p>Nothing in the cart</p>
+          : <table style={{ width: '100%' }}>
+              <tbody>
+                <tr>
+                  <th>
+                    Product
+                  </th>
+
+                  <th>
+                    Price
+                  </th>
+                </tr>
+                {this.state.cart.map((itemId, idx) => (
+                  <tr key={idx}>
+                    <td>
+                      {this.state.inventory[itemId].product}
+                    </td>
+
+                    <td>
+                      {this.CurrencyConverter.convert(
+                        this.state.inventory[itemId].price,
+                        this.state.inventory[itemId].currency,
+                        this.state.localCurrency,
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>}
+      </div>
+    );
+  }
+}
+
+Cart.propTypes = {
+  inventory: React.PropTypes.object.isRequired,
+  localCurrency: React.PropTypes.string.isRequired,
+  currencyConverter: React.PropTypes.object.isRequired,
+};
+
+export default Cart;
+```
+
+Here we have a new shopping cart module that shows the inventory items currently in the shopping cart. There are two very problematic things in this code, what are they?
+
+* The shopping cart is written to a global variable: `window.cart`
+* The cart is updated by continuously reading from the global `window.cart`, which introduces a coupling to timing.
+
+Even though our modules are reusable and readable, by writing to global variables we are making our overall system very brittle. Any third-party library that we bring in could overwrite our `window.cart` with something else and break our app. Furthermore, any module we write can access it and modify it without any safeguards or centralized way of updating.
+
+You might be saying, "Yeah, yeah I would never structure my app like this in the first place." That's great! Remember though, that even though this is exaggerated, the point is that the way the cart is updated and read is not centralized. If instead of using global variables and `setInterval` you were using a message passing module, that could also make your code hard to understand and refactor at scale because it could be hard to isolate state and figure out how one module might affect another.
+
+We will centralize our state management using Redux. If you haven't used Redux before, [check out the tutorial](http://redux.js.org/docs/basics/).
+
+Let's see what this more refactorable code looks like:
 
 
+
+
+You might not need Redux in this specific case, but as we expand this application it will become easier to use Redux as the state management solution instead of linking everything to the parent controller `index.js`
 
 --------------------------------------------------------------------------------
 ## Development
