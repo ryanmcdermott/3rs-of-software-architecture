@@ -1092,5 +1092,10 @@ npm run lint
 
 Finally, change any relevant code examples in this `README.md` to reflect your changes.
 
+## Translation
+
+- ![tr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Turkey.png) **Turkish**: [bsonmez/3rs-of-software-architecture](https://github.com/bsonmez/3rs-of-software-architecture)
+
+
 ## License
 MIT
