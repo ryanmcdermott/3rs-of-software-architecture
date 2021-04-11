@@ -1095,6 +1095,7 @@ Finally, change any relevant code examples in this `README.md` to reflect your c
 ## Translation
 
 - ![tr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Turkey.png) **Turkish**: [bsonmez/3rs-of-software-architecture](https://github.com/bsonmez/3rs-of-software-architecture)
+- ![zh](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese**: [xiaoyu2er/3rs-of-software-architecture-zh](https://github.com/xiaoyu2er/3rs-of-software-architecture-zh)
 
 
 ## License
